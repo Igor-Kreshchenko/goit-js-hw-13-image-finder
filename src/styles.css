@@ -11,10 +11,14 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   width: 100%;
   height: 100%;
-  background-color: #fff;
+  background-color: white;
   padding: 150px 50px 50px 50px;
 }
 
@@ -240,4 +244,25 @@ img {
 
 .logo.is-hidden {
   display: none;
+}
+
+/* Кнопка вверх */
+
+.scroll-top-btn {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  background-color: transparent;
+  bottom: 40px;
+  right: 50px;
+
+  text-decoration: none;
+  text-align: center;
+  line-height: 50px;
+  color: #0275d8;
+  font-size: 22px;
+}
+
+.material-icons.md-60 {
+  font-size: 60px;
 }
