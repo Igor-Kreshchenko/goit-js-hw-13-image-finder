@@ -1,6 +1,10 @@
 import * as basicLightbox from 'basiclightbox';
 
 export default function onOpenModal(event) {
+  if (event.target.nodeName !== 'IMG') {
+    return;
+  }
+
   basicLightbox
     .create(
       `

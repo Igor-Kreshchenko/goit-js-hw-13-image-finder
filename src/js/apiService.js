@@ -11,7 +11,13 @@ export default class ImagesApiService {
     const url = `${BASE_URL}?key=${API_KEY}&q=${this.searchQuery}&page=${this.page}&per_page=12`;
 
     return fetch(url)
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error();
+        }
+
+        return response.json();
+      })
       .then(({ hits }) => {
         this.incrementPage();
         return hits;

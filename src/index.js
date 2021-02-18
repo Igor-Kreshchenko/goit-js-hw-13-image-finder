@@ -5,6 +5,7 @@ import ImagesApiService from './js/apiService';
 import debounce from 'lodash.debounce';
 import LoadMoreBtn from './js/components/load-more-btn';
 import onOpenModal from './js/modal';
+import { showError } from './js/error-notification';
 
 const refs = {
   searchInput: document.querySelector('[data-action="search-js"]'),
@@ -38,10 +39,17 @@ function onSearch(event) {
 function fetchImages() {
   loadMoreBtn.disable();
 
-  imagesApiService.fetchImages().then(images => {
-    appendImagesMarkup(images);
-    loadMoreBtn.enable();
-  });
+  imagesApiService
+    .fetchImages()
+    .then(images => {
+      if (images.length === 0) {
+        showError('No results found. Try again');
+      }
+
+      appendImagesMarkup(images);
+      loadMoreBtn.enable();
+    })
+    .catch(onError);
 }
 
 function appendImagesMarkup(images) {
@@ -50,4 +58,8 @@ function appendImagesMarkup(images) {
 
 function clearGalleryContainer() {
   refs.galleryContainer.innerHTML = '';
+}
+
+function onError() {
+  showError('Unexpected error!');
 }
