@@ -21,13 +21,15 @@ function onSearch(event) {
   imagesApiService.query = event.target.value;
 
   if (imagesApiService.query !== '') {
-    loadMoreBtn.show();
     imagesApiService.resetPage();
     clearGalleryContainer();
     fetchImages();
+    loadMoreBtn.show();
   }
 
   clearGalleryContainer();
+  // отключить внизу
+  loadMoreBtn.disable();
 }
 
 function fetchImages() {
