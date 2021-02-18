@@ -237,3 +237,7 @@ img {
   height: 300px;
   fill: #0275d8;
 }
+
+.logo.is-hidden {
+  display: none;
+}

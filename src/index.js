@@ -10,6 +10,7 @@ import { showError } from './js/error-notification';
 const refs = {
   searchInput: document.querySelector('[data-action="search-js"]'),
   galleryContainer: document.querySelector('.gallery'),
+  logoRef: document.querySelector('.logo'),
 };
 const loadMoreBtn = new LoadMoreBtn({
   selector: '[data-action="load-more"]',
@@ -29,11 +30,12 @@ function onSearch(event) {
     clearGalleryContainer();
     fetchImages();
     loadMoreBtn.show();
+    return;
   }
 
   clearGalleryContainer();
-  // отключить внизу
-  loadMoreBtn.disable();
+  addLogo();
+  loadMoreBtn.hide();
 }
 
 function fetchImages() {
@@ -46,6 +48,7 @@ function fetchImages() {
         showError('No results found. Try again');
       }
 
+      removeLogo();
       appendImagesMarkup(images);
       loadMoreBtn.enable();
     })
@@ -62,4 +65,12 @@ function clearGalleryContainer() {
 
 function onError() {
   showError('Unexpected error!');
+}
+
+function removeLogo() {
+  refs.logoRef.classList.add('is-hidden');
+}
+
+function addLogo() {
+  refs.logoRef.classList.remove('is-hidden');
 }
