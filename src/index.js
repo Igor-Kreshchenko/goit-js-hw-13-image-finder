@@ -1,8 +1,10 @@
 import './styles.css';
+import '../node_modules/basiclightbox/src/styles/main.scss';
 import pageTpl from './templates/template.hbs';
 import ImagesApiService from './js/apiService';
 import debounce from 'lodash.debounce';
 import LoadMoreBtn from './js/components/load-more-btn';
+import onOpenModal from './js/modal';
 
 const refs = {
   searchInput: document.querySelector('[data-action="search-js"]'),
@@ -15,6 +17,7 @@ const loadMoreBtn = new LoadMoreBtn({
 const imagesApiService = new ImagesApiService();
 
 refs.searchInput.addEventListener('input', debounce(onSearch, 500));
+refs.galleryContainer.addEventListener('click', onOpenModal);
 loadMoreBtn.refs.button.addEventListener('click', fetchImages);
 
 function onSearch(event) {

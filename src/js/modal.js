@@ -1,0 +1,11 @@
+import * as basicLightbox from 'basiclightbox';
+
+export default function onOpenModal(event) {
+  basicLightbox
+    .create(
+      `
+    <img width="1400" height="900" src="${event.target.dataset['source']}">
+	`,
+    )
+    .show();
+}
