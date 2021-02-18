@@ -13,6 +13,7 @@ body {
 
 body {
   background: #252525;
+  padding: 150px 50px;
 }
 
 .search-form {
@@ -126,4 +127,42 @@ body {
   color: white;
   opacity: 0.5;
   font-weight: bolder;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Кнопка "Загрузить ещё" */
+
+.btn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 100px;
+  height: 50px;
+}
+
+.btn.is-hidden {
+  display: none;
+}
+
+.btn > .spinner.is-hidden {
+  display: none;
+}
+
+/* Карточки галереи */
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+
+  list-style: none;
+}
+
+.card-image {
+  width: 300px;
 }

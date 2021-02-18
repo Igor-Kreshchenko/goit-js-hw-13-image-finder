@@ -10,11 +10,17 @@
 
 <body>
   <form class="search-form" id="search-form">
-    <input type="text" name="query" autocomplete="off" placeholder="Search images..." />
+    <input type="text" name="query" autocomplete="off" placeholder="Search images..." data-action="search-js" />
     <div class="search"></div>
   </form>
 
   <section class="gallery"></section>
+
+  <button type="button" class="btn btn-primary button" data-action="load-more">
+    <span class="spinner-border spinner-border-sm spinner is-hidden" role="status" aria-hidden="true"></span>
+
+    <span class="label">Показать ещё</span>
+  </button>
 </body>
 
 </html>
