@@ -46,6 +46,7 @@ function fetchImages() {
     .then(images => {
       if (images.length === 0) {
         showError('No results found. Try again');
+        loadMoreBtn.hide();
       }
 
       removeLogo();
