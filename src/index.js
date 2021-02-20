@@ -87,9 +87,9 @@ function resetScrollPosition() {
 function scrollDown() {
   window.scrollTo({
     top: scrollPosition,
-    left: 0,
     behavior: 'smooth',
   });
 
-  scrollPosition = refs.bodyRef.scrollHeight;
+  // 120 - высота, на которую картинки сдвигаются вверх при рендере страницы. (высота кнопки + нижний падинг body + нижний маржин галереи)
+  scrollPosition = refs.bodyRef.scrollHeight - 120;
 }
