@@ -11,12 +11,14 @@ const refs = {
   searchInput: document.querySelector('[data-action="search-js"]'),
   galleryContainer: document.querySelector('.gallery'),
   logoRef: document.querySelector('.logo'),
+  bodyRef: document.body,
 };
 const loadMoreBtn = new LoadMoreBtn({
   selector: '[data-action="load-more"]',
   hidden: true,
 });
 const imagesApiService = new ImagesApiService();
+let scrollPosition = 0;
 
 refs.searchInput.addEventListener('input', debounce(onSearch, 500));
 refs.galleryContainer.addEventListener('click', onOpenModal);
@@ -28,6 +30,7 @@ function onSearch(event) {
   if (imagesApiService.query !== '') {
     imagesApiService.resetPage();
     clearGalleryContainer();
+    resetScrollPosition();
     fetchImages();
     loadMoreBtn.show();
     return;
@@ -53,6 +56,7 @@ function fetchImages() {
       appendImagesMarkup(images);
       loadMoreBtn.enable();
     })
+    .then(scrollDown)
     .catch(onError);
 }
 
@@ -74,4 +78,18 @@ function removeLogo() {
 
 function addLogo() {
   refs.logoRef.classList.remove('is-hidden');
+}
+
+function resetScrollPosition() {
+  scrollPosition = 0;
+}
+
+function scrollDown() {
+  window.scrollTo({
+    top: scrollPosition,
+    left: 0,
+    behavior: 'smooth',
+  });
+
+  scrollPosition = refs.bodyRef.scrollHeight;
 }
