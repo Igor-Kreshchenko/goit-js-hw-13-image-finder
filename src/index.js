@@ -90,6 +90,5 @@ function scrollDown() {
     behavior: 'smooth',
   });
 
-  // 120 - высота, на которую картинки сдвигаются вверх при рендере страницы. (высота кнопки + нижний падинг body + нижний маржин галереи)
-  scrollPosition = refs.bodyRef.scrollHeight - 120;
+  scrollPosition = refs.bodyRef.scrollHeight;
 }
