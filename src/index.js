@@ -90,5 +90,5 @@ function scrollDown() {
     behavior: 'smooth',
   });
 
-  scrollPosition = refs.bodyRef.scrollHeight;
+  scrollPosition = refs.bodyRef.scrollHeight - 120;
 }
